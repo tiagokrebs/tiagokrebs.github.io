@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Tiago Krebs">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://tiagokrebs.github.io/images/taylor-vick-M5tzZtFCOfs-unsplash.jpg">
+    <meta property="twitter:image" content="https://tiagokrebs.github.io/images/taylor-vick-M5tzZtFCOfs-unsplash.jpg" />
+    
+
+    
+    <meta name="title" content="Como Criar um Blog Pessoal com Github Pages e Hugo" />
+    <meta property="og:title" content="Como Criar um Blog Pessoal com Github Pages e Hugo" />
+    <meta property="twitter:title" content="Como Criar um Blog Pessoal com Github Pages e Hugo" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Tiago, Krebs, Docker, Kubernetes, Go, Golang, Microservice, Kafka, Flink, Clilckhouse, Data, Science, Micromaster, Azion, Edge, Computing">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Como Criar um Blog Pessoal com Github Pages e Hugo-Tiago Krebs Blog</title>
+
+    <link rel="canonical" href="/post/github-page/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Tiago Krebs</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/images/post/github-page/mohammad-rahmani-EZrVFJUysLk-unsplash.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/github-pages" title="Github Pages">
+                            Github Pages
+                        </a>
+                        
+                        <a class="tag" href="/tags/hugo" title="Hugo">
+                            Hugo
+                        </a>
+                        
+                        <a class="tag" href="/tags/blog" title="Blog">
+                            Blog
+                        </a>
+                        
+                    </div>
+                    <h1>Como Criar um Blog Pessoal com Github Pages e Hugo</h1>
+                    <h2 class="subheading">Escreva posts utilizando Markdown, utilize controle de versão e não pague nada pelo hosting</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Tiago Krebs
+                             
+                            on 
+                            Tuesday, September 21, 2021
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#github-pages">Github Pages</a></li>
+    <li><a href="#hugo">Hugo</a>
+      <ul>
+        <li><a href="#instalando-o-hugo">Instalando o Hugo</a></li>
+      </ul>
+    </li>
+    <li><a href="#criando-o-ambiente-de-desenvolvimento">Criando o ambiente de desenvolvimento</a>
+      <ul>
+        <li><a href="#criando-o-site">Criando o site</a></li>
+        <li><a href="#instalando-o-tema">Instalando o tema</a></li>
+        <li><a href="#testando-o-site-localmente">Testando o site localmente</a></li>
+      </ul>
+    </li>
+    <li><a href="#criando-seu-primeiro-artigo">Criando seu primeiro artigo</a>
+      <ul>
+        <li><a href="#configuração">Configuração</a></li>
+        <li><a href="#archetypes">Archetypes</a></li>
+        <li><a href="#escrevendo">Escrevendo</a></li>
+        <li><a href="#conectando-o-repositório-de-desenvolvimento-e-o-repositório-do-github-pages">Conectando o repositório de desenvolvimento e o repositório do Github Pages</a></li>
+        <li><a href="#publicando-o-site">Publicando o site</a></li>
+        <li><a href="#produto-final">Produto final</a></li>
+      </ul>
+    </li>
+    <li><a href="#utilizando-seu-domínio">Utilizando seu domínio</a>
+      <ul>
+        <li><a href="#comprando-um-domínio">Comprando um domínio</a></li>
+        <li><a href="#apontando-seu-domínio-para-o-seu-github-pages">Apontando seu domínio para o seu Github Pages</a></li>
+        <li><a href="#adicionando-um-novo-domínio-ao-seu-github-pages">Adicionando um novo domínio ao seu Github Pages</a></li>
+      </ul>
+    </li>
+    <li><a href="#referências">Referências</a></li>
+  </ul>
+</nav>
+                
+                <p>Seu Tech Blog também está num post-it perdido pela sua parede já faz um tempo?</p>
+<p>Resista aos seus instintos de Dev, não inicie um &ldquo;projeto simples&rdquo; utilizando sua linguagem e framework favoritos, com um sistema de comentários, test coverage, CI/CD e aquele Cloud Provider no qual você abriu conta mas nunca utilizou de verdade ($$$). <em>Hear me out</em>, crie seu site pessoal sem ficar preso a um serviço de hosting. Esse artigo descreve como utilizar Github Pages e Hugo para criar, manter e fazer o hosting de maneira fácil e melhor de tudo, <strong>Free</strong>.</p>
+<h2 id="github-pages">Github Pages</h2>
+<p>O Github Pages é a combinação entre um repositório e um site estático. Para que o conteúdo do seu site seja publicado basta fazer um commit no branch <code>main</code> do repositório. Se quiser um overview rápido confira o <a href="https://pages.github.com/">Github Pages Get Started</a>. Aqui vamos utilizar não um, mas dois repositórios. O primeiro destinado ao desenvolvimento e outro para a página gerada com o Hugo.</p>
+<p>Criar repositórios no Github é fácil, mas, para que seu repositório funcione com o Github Pages é necessário ter atenção ao nome escolhido. O repositório precisa ser nomeado da seguinte forma: <code>&lt;github-user&gt;.github.io</code>. Por exemplo, o repositório desta página é <code>tiagokrebs.github.io</code>. O nome do seu repositório também será a URL da sua página quando publicada.</p>
+<p>Inicie criando dois repositórios:</p>
+<ul>
+<li><code>&lt;github-user&gt;.github.io</code> Página publicada</li>
+<li><code>&lt;github-user&gt;.github.io.dev</code> Repositório de desenvolvimento</li>
+</ul>
+<h2 id="hugo">Hugo</h2>
+<p>O Hugo é um gerador de sites estáticos open source sofisticado e simples de utilizar. Com base em um template pré-definido (também chamado de tema ou skin) é capaz de interpretar como um website deve ser criado. Um tema é a combinação de HTML, CSS e outras estruturas que a Engine utiliza, como templates parciais, archetypes e layouts. O Hugo também possui um Web Server interno que pode ser utilizado em desenvolvimento para preview do conteúdo.</p>
+<p>Existem duas formas de trabalho com o Hugo:</p>
+<ul>
+<li>Desenvolvimento: o conteúdo do site é criado utilizando Markdown, toda alteração é refletida na no Web Server interno imediatamente.</li>
+<li>Build: com base no layout do tema o Hugo gera o conteúdo completo do site, incluindo HTML, CSS, estáticos e o conteúdo das páginas escritas em Markdown.</li>
+</ul>
+<h3 id="instalando-o-hugo">Instalando o Hugo</h3>
+<p>Instalar o Hugo é simples, veja em <a href="https://gohugo.io/getting-started/installing/">Install Hugo</a>.</p>
+<ul>
+<li>No Mac, <code>brew install hugo</code></li>
+<li>No Linux, <code>snap install hugo</code></li>
+<li>Também é possível utilizá-lo com <a href="https://hub.docker.com/r/klakegg/hugo/">Docker</a>.</li>
+</ul>
+<h2 id="criando-o-ambiente-de-desenvolvimento">Criando o ambiente de desenvolvimento</h2>
+<p>Clone o repositório de desenvolvimento.</p>
+<pre><code>git clone git@github.com:&lt;github-user&gt;/&lt;github-user&gt;.github.io.dev.git
+</code></pre><h3 id="criando-o-site">Criando o site</h3>
+<p>Crie a estrutura inicial do site utilizando o CLI do Hugo.</p>
+<pre><code>hugo new site &lt;github-user&gt;.github.io.dev
+
+cd &lt;github-user&gt;.github.io.dev
+</code></pre><p>A seguinte estrutura será criada:</p>
+<pre><code>.
+├── archetypes
+├── config.toml
+├── content
+├── data
+├── layouts
+├── resources
+├── static
+|── themes
+</code></pre><p>Inicialmente, apenas alguns diretórios e arquivos nos interessam:</p>
+<ul>
+<li><code>content</code> - Diretório do conteúdo do site, diversos subdiretórios e arquivos Markdown</li>
+<li><code>static</code> - Conteúdo estático, como imagens</li>
+<li><code>themes</code> - Submódulo Git com o repositório do tema</li>
+<li><code>config.toml</code> - Configuração básica do site</li>
+<li><code>archetypes</code> - Templates utilizados pelo CLI na criação de arquivos Markdown</li>
+</ul>
+<h3 id="instalando-o-tema">Instalando o tema</h3>
+<p>O próximo passo é escolher um tema. Vá para a <a href="https://themes.gohugo.io/">página de temas do Hugo</a> e escolha um. Atualmente eu estou usando o tema <a href="https://themes.gohugo.io/themes/hugo-theme-cleanwhite/">Clean White</a>. Uma vez escolhido basta adicionar o repositório do tema como um submódulo Git.</p>
+<pre><code>git submodule add &lt;theme-github-url&gt; &lt;target-directory&gt;
+</code></pre><p>Para o tema Clean White:</p>
+<pre><code>git submodule add git@github.com:youngkin/hugo-theme-cleanwhite-rsy themes/hugo-theme-cleanwhite
+</code></pre><p>O tema é criado como um subdiretório da pasta <code>themes</code>.</p>
+<pre><code>[...]
+└── themes
+    └── hugo-theme-cleanwhite
+</code></pre><p>Algumas configurações padrão também foram inicializadas no arquivo <code>config.toml</code>. Adicione o tema utilizado. O nome do tema é o nome do diretório criado na pasta <code>themes</code>.</p>
+<pre><code>echo 'theme = &quot;hugo-theme-cleanwhite&quot;' &gt;&gt; config.toml
+</code></pre><h3 id="testando-o-site-localmente">Testando o site localmente</h3>
+<p>Para testar o site localmente crie a primeira página de teste.</p>
+<pre><code>hugo new post/testpage.md
+</code></pre><p>Uma nova página será criada em <code>content/post/testpage.md</code>. A pasta <code>content</code> é utilizada pelo Hugo como uma das origens para a criação do site. O arquivo terá o seguinte conteúdo:</p>
+<pre><code>---
+title: &quot;Testpage&quot;
+date: 2020-08-27T13:43:09-06:00
+draft: true
+---
+</code></pre><p>Note que o arquivo foi criado com base em <code>archetypes/default.md</code>. O conteúdo entre <code>---</code> é chamado de front matter e contém as configurações do Markdown. Abaixo desse bloco fica o corpo da página.</p>
+<p>O próximo passo é testar a instalação iniciando o servidor interno do Hugo e acessando o site de desenvolvimento.</p>
+<pre><code>hugo server -D
+</code></pre><p>Acesse <a href="http://localhost:1313/">http://localhost:1313/</a> e veja seu site. Experimente alterar o título da página no arquivo <code>testpage.md</code>, o Hugo vai atualizar o seu site e recarregar no seu navegador assim que você salvar a alteração.</p>
+<h2 id="criando-seu-primeiro-artigo">Criando seu primeiro artigo</h2>
+<p>Comece removendo a página de teste, basta deletar o arquivo <code>content/post/testpage.md</code>.</p>
+<h3 id="configuração">Configuração</h3>
+<p>A configuração básica do Hugo fica no arquivo <code>config.toml</code>, para mais detalhes veja em <a href="https://gohugo.io/getting-started/configuration/">Configure Hugo</a>.</p>
+<pre><code>baseurl = &quot;https://tiagokrebs.github.io&quot;
+title = &quot;Tiago Krebs&quot;
+theme = &quot;hugo-theme-cleanwhite&quot;
+languageCode = &quot;pt-br&quot;
+paginate = 5000 #frontpage pagination
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  header_image = &quot;&quot;
+  title = &quot;Software Engineering&quot;
+  slogan = &quot;$ echo -e \&quot;things I'm working on or pondering\&quot;.&quot;
+  SEOTitle = &quot;Tiago Krebs Blog&quot;
+  keyword = &quot;Tiago, Krebs, Docker, Kubernetes, Go, Golang, Microservice, Kafka, Flink, Clilckhouse, Data, Science, Micromaster, Azion, Edge, Computing&quot;
+ 
+  # Sidebar settings
+  sidebar_about_description = &quot;Systems Engineer, Software Developer, Data Engineer, Tech Manager&quot;
+  sidebar_avatar = &quot;&quot;
+  about_me = true
+
+  featured_tags = true 
+  featured_condition_size = 2 # How many posts have to have a given tag to be featured (greater-than)
+
+  image_404 = &quot;images/404.jpg&quot;
+  title_404 = &quot;Oops...&quot;
+
+  omit_categories = false
+
+  [[params.addtional_menus]]
+  title =  &quot;ABOUT&quot;
+  href =  &quot;/top/about/&quot;
+
+  [params.social]
+  rss            = true
+  email          = &quot;krebstiago@gmail.com&quot;
+  linkedin       = &quot;https://www.linkedin.com/in/tiagokrebs&quot;
+  github         = &quot;https://github.com/tiagokrebs&quot;
+</code></pre><h3 id="archetypes">Archetypes</h3>
+<p>Archetypes são templates usados pelo Hugo quando novas páginas são criadas através do CLI. Essa é a forma para a criação de um front matter padrão de acordo com o diretório. Eles descrevem características básicas das páginas como título, descrição, autor, data e se um TOC deve ser criado no topo ou não.
+O Hugo cria um archetype default no arquivo <code>archetypes/default.md</code>. Crie um novo archetype em <code>archetypes/post.md</code>, destinado aos posts.</p>
+<pre><code>---
+title: &quot;{{ replace .Name &quot;-&quot; &quot; &quot; | title }}&quot;
+#description: &lt;descrição aqui&gt;
+date: {{ .Date }}
+draft: true
+showtoc: true
+image: &quot;&quot;
+tags: []
+categories: []
+---
+
+# Descrição aqui...
+&lt;--more--&gt;
+</code></pre><p>Existem outros archetypes importantes para o Hugo, leia mais em <a href="https://gohugo.io/content-management/archetypes/">Archetypes</a>.</p>
+<p>Crie o primeiro post novamente e confira o arquivo Markdown gerado. Verifique se o archetype <code>post.md</code> foi aplicado com sucesso.</p>
+<pre><code>hugo new post/testpage.md
+</code></pre><h3 id="escrevendo">Escrevendo</h3>
+<p>Como dito anteriormente, as páginas são escritas utilizando Markdown. É provável que em algum momento você precise adicionar conteúdo estático a sua página, para isso utilize a pasta <code>static</code> criada pelo Hugo. Note que na referência dos estáticos o path <code>static</code> não precisa ser informado. Por exemplo, para utilizar a imagem <code>image_404 = &quot;images/404.jpg&quot;</code> no arquivo <code>config.toml</code> basta posicionar o arquivo <code>404.jpg</code> no path <code>static/images/</code> do seu projeto.</p>
+<h3 id="conectando-o-repositório-de-desenvolvimento-e-o-repositório-do-github-pages">Conectando o repositório de desenvolvimento e o repositório do Github Pages</h3>
+<p>Essa etapa só precisa ser feita uma única vez. Agora é a hora de conectar o repositório de desenvolvimento com o repositório do Github Pages. Para isso vamos utilizar a pasta <code>public</code>. Esse é o diretório onde o Hugo cria o site no momento do build. Para fazer o link utilizamos um submódulo Git.</p>
+<pre><code>git submodule add -b main git@github.com:&lt;github-user&gt;/&lt;github-user&gt;.github.io.git public
+</code></pre><p>Para verificar se o link foi criado corretamente utilize <code>git remote -v</code> dentro da pasta <code>public</code>.</p>
+<pre><code>$ cd public
+$ git remote -v
+origin	git@github.com:&lt;github-user&gt;/&lt;github-user&gt;/&lt;github-user&gt;.github.io.git (fetch)
+origin	git@github.com:&lt;github-user&gt;/&lt;github-user&gt;/&lt;github-user&gt;.github.io.git (push)
+$ cd ..
+</code></pre><h3 id="publicando-o-site">Publicando o site</h3>
+<p>Para publicar o site siga os passos abaixo. Alguns deles precisam ser feitos apenas uma vez, após vamos criar o script <code>deploy.sh</code> para facilitar o trabalho.</p>
+<p>Faça o build do site.</p>
+<pre><code>$ hugo -D
+
+start building sites … 
+
+                   | EN  
+-------------------+-----
+  Pages            | 18  
+  Paginator pages  |  0  
+  Non-page files   |  0  
+  Static files     | 57  
+  Processed images |  0  
+  Aliases          |  5  
+  Sitemaps         |  1  
+  Cleaned          |  0  
+
+Total in 33 ms
+</code></pre><p>Faça o commit das alterações para o repositório do Github Pages.</p>
+<pre><code>cd public
+git add .
+git commit -m &quot;primeiro commit&quot;
+git branch -M main
+git push -u origin main
+</code></pre><p>Faça o commit das alterações do repositório de desenvolvimento.</p>
+<pre><code>cd ..
+cd public
+git add .
+git commit -m &quot;primeiro commit&quot;
+git branch -M main
+git push -u origin main
+</code></pre><p>Para os próximos deploys você pode utilizar o script abaixo, posicione-o na raiz do seu repositório de desenvolvimento.</p>
+<pre><code>#!/bin/sh
+
+# If a command fails then the deploy stops
+set -e
+
+printf &quot;\033[0;32mDeploying updates to GitHub...\033[0m\n&quot;
+
+# Create commit message
+msg=&quot;rebuilding site $(date)&quot;
+if [ -n &quot;$*&quot; ]; then
+	msg=&quot;$*&quot;
+fi
+
+# Build the project.
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Committing changes to $(pwd)&quot;
+hugo -D
+
+# Go To Public folder
+cd public
+
+# Add 'public' (Github Pages repo) changes to git and commit/push.
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Committing changes to $(pwd)&quot;
+git add .
+git commit -m &quot;$msg&quot;
+git push origin main
+
+# Add this repos changes to git and commit/push. First 'cd' out of public
+cd ..
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Committing changes to $(pwd)&quot;
+git add .
+git commit -m &quot;$msg&quot;
+git push origin main
+</code></pre><p>Quando estiver pronto para publicar seu site basta executar:</p>
+<pre><code>./deploy.sh
+</code></pre><p>Feio isso acesse seu site em <code>&lt;github-user&gt;.github.io</code>.</p>
+<h3 id="produto-final">Produto final</h3>
+<p>Dê uma olhada nos repositórios deste site.<br>
+<a href="https://github.com/tiagokrebs/tiagokrebs.github.io.dev">O repositório de desenvolvimento</a>.<br>
+<a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite">O repositório do tema Clean White</a>.<br>
+<a href="https://github.com/tiagokrebs/tiagokrebs.github.io">O repositório com a Github Page publicada</a>.<br>
+Este site <a href="tiagokrebs.github.io">tiagokrebs.github.io</a>.</p>
+<h2 id="utilizando-seu-domínio">Utilizando seu domínio</h2>
+<p>Se você acessar o meu Github Pages pessoal em <a href="tiagokrebs.github.io">tiagokrebs.github.io</a> vai notar o redirecionamento para <a href="https://tiagokrebs.com">https://tiagokrebs.com</a>. A partir desse ponto o artigo traz a solução com custo mínimo para você usar seu próprio domínio na sua Github Page também.</p>
+<h3 id="comprando-um-domínio">Comprando um domínio</h3>
+<p>Existem diversas plataformas onde você pode comprar o seu domínio. Registro.br, AWS, GoDaddy, Locaweb, Hostgator são algumas delas. Pela compra facilitada e a possibilidade de configuração de entradas DNS sem custo, nesse artigo vamos utilizar a <a href="https://www.godaddy.com">GoDaddy</a>. Acesse a plataforma, escolha seu domínio e faça a compra, o processo é simples e intuitivo. Eventualmente a GoDaddy tem promoções para registro acima de 1 ano e cupons de desconto disponíveis (Google it).</p>
+<h3 id="apontando-seu-domínio-para-o-seu-github-pages">Apontando seu domínio para o seu Github Pages</h3>
+<p>Depois de alguns minutos seu domínio estará pronto para ser utilizado. Acesse as configurações do seu domínio e procure pela opção <strong>Gerenciar DNS</strong>.</p>
+<p>Para que seu site responda através de um domínio apex além do subdomínio www vamos precisar criar quatro entradas do tipo A e duas entradas do tipo CNAME no DNS da GoDaddy. Se precisar de ajuda confira as documentações oficiais em <a href="https://br.godaddy.com/help/adicionar-um-registro-a-19238">Adicionar um Registro A</a> e <a href="https://br.godaddy.com/help/adicionar-um-registro-cname-19236">Adicionar um Registro CNAME</a>. Os registros tipo A devem apontar para os IPs do Github, verifique os IPs atuais em <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">Configuring a apex domain</a>.</p>
+<p>Crie as entradas conforme o exemplo do meu domínio pessoal abaixo.
+
+  <img src="/images/post/github-page/dns-tiagokrebs-com.png" alt="DNS tiagokrebs.com">
+
+</p>
+<p>Teste se as suas configurações funcionam utilizando o comando <code>dig</code>. Se tudo estiver correto você verá uma resposta semelhante a abaixo para o seu domínio.</p>
+<pre><code>$ dig tiagokrebs.com +noall +answer -t A
+tiagokrebs.com.		303	IN	A	185.199.110.153
+tiagokrebs.com.		303	IN	A	185.199.108.153
+tiagokrebs.com.		303	IN	A	185.199.109.153
+tiagokrebs.com.		303	IN	A	185.199.111.153
+</code></pre><h3 id="adicionando-um-novo-domínio-ao-seu-github-pages">Adicionando um novo domínio ao seu Github Pages</h3>
+<p>Acesse as configurações do seu repositório do Github Pages e vá até o menu <code>Pages</code>. Informe o seu domínio no campo <code>Custom domain</code>.<br>
+
+  <img src="/images/post/github-page/repo-settings.png" alt="Github Pages Custom Domain">
+
+<br>
+Nesse momento o Github vai validar se o seu domínio está configurado corretamente para ser utilizado. Depois do teste você pode habilitar a opção <code>Enforce HTTPS</code>. É comum que o DNS leve algumas horas para responder corretamente às novas configurações que você criou, caso a configuração do Github responda com erro tente novamente dentro de uma hora.</p>
+<p>E Voilà, acesse seu domínio e você será redirecionado ao seu Github Pages pessoal.<br>
+Sinta-se à vontade para me contatar se algo não funcionou para você, meus contatos estão aqui no rodapé :).</p>
+<h2 id="referências">Referências</h2>
+<p><a href="https://pages.github.com/">https://pages.github.com/</a><br>
+<a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a><br>
+<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a><br>
+<a href="https://gohugo.io/content-management/toc/">https://gohugo.io/content-management/toc/</a><br>
+<a href="https://gohugo.io/getting-started/quick-start/">https://gohugo.io/getting-started/quick-start/</a><br>
+<a href="https://hub.docker.com/r/klakegg/hugo/">https://hub.docker.com/r/klakegg/hugo/</a><br>
+<a href="https://gohugo.io/getting-started/installing/">https://gohugo.io/getting-started/installing/</a><br>
+<a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain</a></p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/blog" title="blog">
+                            blog
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/github-pages" title="github-pages">
+                            github-pages
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Tiago Krebs" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:krebstiago@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/tiagokrebs">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/tiagokrebs">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Tiago Krebs 2021
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
