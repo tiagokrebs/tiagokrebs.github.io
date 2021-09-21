@@ -473,7 +473,7 @@ git push origin main
 <a href="https://github.com/tiagokrebs/tiagokrebs.github.io.dev">O repositório de desenvolvimento</a>.<br>
 <a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite">O repositório do tema Clean White</a>.<br>
 <a href="https://github.com/tiagokrebs/tiagokrebs.github.io">O repositório com a Github Page publicada</a>.<br>
-Este site <a href="tiagokrebs.github.io">tiagokrebs.github.io</a>.</p>
+Este site <a href="https://tiagokrebs.github.io">tiagokrebs.github.io</a>.</p>
 <h2 id="utilizando-seu-domínio">Utilizando seu domínio</h2>
 <p>Se você acessar o meu Github Pages pessoal em <a href="tiagokrebs.github.io">tiagokrebs.github.io</a> vai notar o redirecionamento para <a href="https://tiagokrebs.com">https://tiagokrebs.com</a>. A partir desse ponto o artigo traz a solução com custo mínimo para você usar seu próprio domínio na sua Github Page também.</p>
 <h3 id="comprando-um-domínio">Comprando um domínio</h3>
@@ -498,8 +498,10 @@ tiagokrebs.com.		303	IN	A	185.199.111.153
   <img src="/images/post/github-page/repo-settings.png" alt="Github Pages Custom Domain">
 
 <br>
-Nesse momento o Github vai validar se o seu domínio está configurado corretamente para ser utilizado. Depois do teste você pode habilitar a opção <code>Enforce HTTPS</code>. É comum que o DNS leve algumas horas para responder corretamente às novas configurações que você criou, caso a configuração do Github responda com erro tente novamente dentro de uma hora.</p>
-<p>E Voilà, acesse seu domínio e você será redirecionado ao seu Github Pages pessoal.<br>
+Nesse momento o Github vai validar se o seu domínio está configurado corretamente para ser utilizado. Depois do teste você pode habilitar a opção <code>Enforce HTTPS</code>. É comum que o DNS leve algumas horas para responder corretamente às novas configurações que você criou, caso a configuração do Github responda com erro tente novamente dentro de uma hora. Esse procedimento vai adicionar o arquivo <code>CNAME</code> no repositório do Github Pages, lembre-se de atualizar o subrepositório local na pasta <code>public</code>.</p>
+<pre><code>cd public
+git fetch
+</code></pre><p>E Voilà, acesse seu domínio e você será redirecionado ao seu Github Pages pessoal.<br>
 Sinta-se à vontade para me contatar se algo não funcionou para você, meus contatos estão aqui no rodapé :).</p>
 <h2 id="referências">Referências</h2>
 <p><a href="https://pages.github.com/">https://pages.github.com/</a><br>
