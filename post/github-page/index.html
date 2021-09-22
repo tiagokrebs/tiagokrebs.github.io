@@ -173,7 +173,7 @@
                         
                     </div>
                     <h1>Como Criar um Blog Pessoal com Github Pages e Hugo</h1>
-                    <h2 class="subheading">Escreva posts utilizando Markdown, utilize controle de versão e não pague nada pelo hosting</h2>
+                    <h2 class="subheading">Escreva posts com Markdown, utilize controle de versão e não pague nada pelo hosting</h2>
                     <span class="meta">
                         
                             Posted by 
@@ -247,9 +247,9 @@
 </nav>
                 
                 <p>Seu Tech Blog também está num post-it perdido pela sua parede já faz um tempo?</p>
-<p>Resista aos seus instintos de Dev, não inicie um &ldquo;projeto simples&rdquo; utilizando sua linguagem e framework favoritos, com um sistema de comentários, test coverage, CI/CD e aquele Cloud Provider no qual você abriu conta mas nunca utilizou de verdade ($$$). <em>Hear me out</em>, crie seu site pessoal sem ficar preso a um serviço de hosting. Esse artigo descreve como utilizar Github Pages e Hugo para criar, manter e fazer o hosting de maneira fácil e melhor de tudo, <strong>Free</strong>.</p>
+<p>Resista aos seus instintos de Dev, não inicie um &ldquo;projeto simples&rdquo; utilizando sua linguagem e framework favoritos, com um sistema de comentários, test coverage, CI/CD e aquele Cloud Provider no qual você abriu conta mas nunca utilizou de verdade ($$$). <em>Hear me out</em>, crie seu site pessoal sem ficar preso a um serviço de hosting. Esse artigo descreve como utilizar Github Pages e Hugo para criar, manter e fazer o hosting de maneira fácil e o melhor de tudo, <strong>Free</strong>.</p>
 <h2 id="github-pages">Github Pages</h2>
-<p>O Github Pages é a combinação entre um repositório e um site estático. Para que o conteúdo do seu site seja publicado basta fazer um commit no branch <code>main</code> do repositório. Se quiser um overview rápido confira o <a href="https://pages.github.com/">Github Pages Get Started</a>. Aqui vamos utilizar não um, mas dois repositórios. O primeiro destinado ao desenvolvimento e outro para a página gerada com o Hugo.</p>
+<p>O Github Pages é a combinação entre um repositório e um site estático. Para que o conteúdo do seu site seja publicado basta fazer um commit no branch <code>main</code> do repositório. Se quiser um overview rápido confira o <a href="https://pages.github.com/">Github Pages Get Started</a>. Aqui vamos dois repositórios, o primeiro destinado ao desenvolvimento e outro para a página gerada com o Hugo.</p>
 <p>Criar repositórios no Github é fácil, mas, para que seu repositório funcione com o Github Pages, é necessário ter atenção ao nome escolhido. O repositório precisa ser nomeado da seguinte forma: <code>&lt;github-user&gt;.github.io</code>. Por exemplo, o repositório desta página é <code>tiagokrebs.github.io</code>. O nome do seu repositório também será a URL da sua página quando publicada.</p>
 <p>Inicie criando dois repositórios:</p>
 <ul>
@@ -473,15 +473,15 @@ git push origin main
 <a href="https://github.com/tiagokrebs/tiagokrebs.github.io.dev">O repositório de desenvolvimento</a>.<br>
 <a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite">O repositório do tema Clean White</a>.<br>
 <a href="https://github.com/tiagokrebs/tiagokrebs.github.io">O repositório com a Github Page publicada</a>.<br>
-Este site <a href="https://tiagokrebs.github.io">https://tiagokrebs.github.io</a>.</p>
+Este site <a href="https://tiagokrebs.github.io">tiagokrebs.github.io</a>.</p>
 <h2 id="utilizando-seu-domínio">Utilizando seu domínio</h2>
-<p>Se você acessar o meu Github Pages pessoal em <a href="tiagokrebs.github.io">tiagokrebs.github.io</a> vai notar o redirecionamento para <a href="https://tiagokrebs.com">https://tiagokrebs.com</a>. A partir desse ponto o artigo traz a solução com custo mínimo para você usar seu próprio domínio na sua Github Page também.</p>
+<p>Se você acessar o meu Github Pages pessoal em <a href="https://tiagokrebs.github.io">tiagokrebs.github.io</a> vai notar o redirecionamento para <a href="https://tiagokrebs.com">https://tiagokrebs.com</a>. A partir desse ponto o artigo traz a solução com custo mínimo para você usar seu próprio domínio na sua Github Page também.</p>
 <h3 id="comprando-um-domínio">Comprando um domínio</h3>
 <p>Existem diversas plataformas onde você pode comprar o seu domínio. Registro.br, AWS, GoDaddy, Locaweb, Hostgator são algumas delas. Pela compra facilitada e a possibilidade de configuração de entradas DNS sem custo, nesse artigo vamos utilizar a <a href="https://www.godaddy.com">GoDaddy</a>. Acesse a plataforma, escolha seu domínio e faça a compra, o processo é simples e intuitivo. Eventualmente a GoDaddy tem promoções para registro acima de 1 ano e cupons de desconto disponíveis (Google it).</p>
 <h3 id="apontando-seu-domínio-para-o-seu-github-pages">Apontando seu domínio para o seu Github Pages</h3>
 <p>Depois de alguns minutos seu domínio estará pronto para ser utilizado. Acesse as configurações do seu domínio e procure pela opção <strong>Gerenciar DNS</strong>.</p>
 <p>Para que seu site responda através de um domínio apex além do subdomínio www vamos precisar criar quatro entradas do tipo A e duas entradas do tipo CNAME no DNS da GoDaddy. Se precisar de ajuda confira as documentações oficiais em <a href="https://br.godaddy.com/help/adicionar-um-registro-a-19238">Adicionar um Registro A</a> e <a href="https://br.godaddy.com/help/adicionar-um-registro-cname-19236">Adicionar um Registro CNAME</a>. Os registros tipo A devem apontar para os IPs do Github, verifique os IPs atuais em <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">Configuring a apex domain</a>.</p>
-<p>Crie as entradas conforme o exemplo do meu domínio pessoal abaixo.
+<p>Crie os registros A e CNAME conforme o exemplo do meu domínio pessoal abaixo. Essas configurações devem funcionar para qualquer outro serviço de DNS e não apenas para a GoDaddy.
 
   <img src="/images/post/github-page/dns-tiagokrebs-com.png" alt="DNS tiagokrebs.com">
 
@@ -502,8 +502,7 @@ Nesse momento o Github vai validar se o seu domínio está configurado corretame
 <pre><code>cd public
 git fetch
 git pull
-</code></pre><p>E Voilà, acesse seu domínio e você será redirecionado ao seu Github Pages pessoal.<br>
-Sinta-se à vontade para me contatar se algo não funcionou para você, meus contatos estão aqui no rodapé :).</p>
+</code></pre><p>E Voilà, acesse seu domínio e você será redirecionado ao seu Github Pages pessoal.</p>
 <h2 id="referências">Referências</h2>
 <p><a href="https://pages.github.com/">https://pages.github.com/</a><br>
 <a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a><br>
@@ -513,6 +512,8 @@ Sinta-se à vontade para me contatar se algo não funcionou para você, meus con
 <a href="https://hub.docker.com/r/klakegg/hugo/">https://hub.docker.com/r/klakegg/hugo/</a><br>
 <a href="https://gohugo.io/getting-started/installing/">https://gohugo.io/getting-started/installing/</a><br>
 <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain</a></p>
+<hr>
+<p>Ficou na dúvida ou algum passo não funcinou para você? Me dê um ping, os contatos estão aqui no rodapé :)</p>
 
 
                 
