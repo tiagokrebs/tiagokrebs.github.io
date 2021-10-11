@@ -475,7 +475,7 @@ ORDER BY (OwnerUserId, CreationDate);
 <h3 id="importação-dos-dados">Importação dos dados</h3>
 <p>A interface de entrada e saída do Clickhouse é bastante completa e possui integração com diversos formatos de dados. Através da engine SQL é possível definir o formato para <code>INPUT</code> e <code>OUTPUT</code> além da origem e/ou destino das informações. Com isso, importar, exportar ou até mesmo converter datasets em formatos como TSV, CSV, XML, JSON, TSKV, etc são operações que podem ser abstraídas facilmente pela plataforma. Veja mais em <a href="https://clickhouse.com/docs/en/interfaces/formats/">Formats for Input and Output Data</a>.</p>
 <p>O dataset do tutorial é composto por três arquivos CSV, para importá-los utilize as instruções abaixo.</p>
-<p>Abra uma sessão bash com o Clickhouse Standalome.</p>
+<p>Abra uma sessão bash com o Clickhouse Standalone.</p>
 <pre><code>$ docker exec -it clickhouse-standalone bash
 </code></pre><p>Importe <code>Tag.csv</code>.</p>
 <pre><code>$ cat /data/Tags.csv \
@@ -485,7 +485,7 @@ ORDER BY (OwnerUserId, CreationDate);
 <pre><code>$ cat /data/Answers.csv \
     | /usr/bin/clickhouse --client \
     --query=&quot;INSERT INTO tutorial.answers SELECT Id UInt32, OwnerUserId, toDateTime(parseDateTimeBestEffort(CreationDate)) AS CreationDate, ParentId, Score, Body FROM input('Id UInt32, OwnerUserId String, CreationDate String, ParentId String, Score Int32, Body String') FORMAT CSVWithNames&quot;
-</code></pre><p>Importe <code>Questions.csv</code>. Para essa tabela, além do ajuste de valor para algumas colunas, utilizamos a opção <code>input_format_allow_errors_ratio</code> a fim de configurar um percentual de erros de importação aceitável para o procedimento (linhas mal formadas são descartadas).</p>
+</code></pre><p>Importe <code>Questions.csv</code>. Para essa tabela, além do ajuste de valor para algumas colunas, utilizamos a opção <code>input_format_allow_errors_ratio</code> a fim de configurar um percentual de erros aceitável no procedimento de importação (linhas mal formadas são descartadas).</p>
 <pre><code>$ cat /data/Questions.csv \
     sed &quot;s/'/ /g&quot; | /usr/bin/clickhouse \
     --client --query=&quot;INSERT INTO tutorial.questions SELECT Id UInt32, OwnerUserId, toDateTime(parseDateTimeBestEffort(CreationDate)) AS CreationDate, toDateTime(parseDateTimeBestEffort(replaceOne(ClosedDate, 'NA', null))) AS ClosedDate, Score, Title, Body FROM input('Id UInt32, OwnerUserId String, CreationDate String, ClosedDate String, Score Int32, Title String, Body String') FORMAT CSVWithNames&quot; \
