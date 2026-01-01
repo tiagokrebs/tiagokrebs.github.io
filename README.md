@@ -1,35 +1,41 @@
 # tiagokrebs.com
 
-Used to build my [tiagokrebs.com](https://tiagokrebs.com) page at the Edge.  
-Based on [gohugo.io](https://gohugo.io), [NPM](https://www.npmjs.com/) and [azion.com](http://azion.com).
+Personal website built with [Hugo](https://gohugo.io) and deployed to [GitHub Pages](https://pages.github.com).
 
-Clone with submodules (themes)
-```
-$ git clone --recurse-submodules https://github.com/tiagokrebs/tiagokrebs.com.git
-```
+## Setup
 
-Add new post
-```
-$ npx hugo new content/posts/newpost.md
+Clone with submodules (themes):
+```bash
+git clone --recurse-submodules https://github.com/tiagokrebs/tiagokrebs.com.git
 ```
 
-Start a new Edge Application (if doesn't exists yet), chose Hugo preset
-```
-$ azion link
+## Development
+
+Add new post:
+```bash
+hugo new content/posts/newpost.md
 ```
 
-Build
-```
-$ azion build
-```
-
-Run a local dev environment
-```
-$ azion dev
+Run local dev server:
+```bash
+hugo serve -D
 ```
 
-Deploy at the Edge
+Build locally:
+```bash
+hugo --gc --minify
 ```
-$ azion deploy
-```
+
+## Deployment
+
+Site deploys automatically via GitHub Actions when you push to `main` branch.
+
+### Initial Setup (one-time)
+
+1. Rename repository to `tiagokrebs.github.io`
+2. Go to repository Settings → Pages
+3. Under "Build and deployment", set Source to "GitHub Actions"
+4. Push to `main` branch to trigger deployment
+
+Site will be available at `https://tiagokrebs.github.io`
 

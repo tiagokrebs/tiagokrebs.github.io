@@ -1,5 +1,4 @@
 .hugo_build.lock
-node_modules/
-npm-debug.log*
-.npm
 .DS_Store
+public/
+resources/_gen/
